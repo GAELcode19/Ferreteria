@@ -8,8 +8,7 @@ Route::middleware('guest')->group(function () {
     Volt::route('login', 'auth.login')
         ->name('login');
 
-    Volt::route('register', 'auth.register')
-        ->name('register');
+    // Registro público deshabilitado: los usuarios se crean desde el módulo de Usuarios (admin)
 
     Volt::route('forgot-password', 'auth.forgot-password')
         ->name('password.request');
