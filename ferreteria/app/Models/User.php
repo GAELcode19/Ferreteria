@@ -22,6 +22,8 @@ class User extends Authenticatable // implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role',
+        'activo',
     ];
 
     /**
@@ -44,7 +46,18 @@ class User extends Authenticatable // implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'activo' => 'boolean',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function ventas()
+    {
+        return $this->hasMany(Venta::class);
     }
 
     /**
